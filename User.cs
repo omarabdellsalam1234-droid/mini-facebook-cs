@@ -3,7 +3,7 @@ public class User
     public string Id { get; }
     public string Name { get; private set; }
     public string Password { get; private set; }
-    // public Profile Profile { get; }
+    public Profile Profile { get; }
     public List<User> Friends { get; private set; } = new List<User>();
 
     
@@ -12,6 +12,12 @@ public class User
         Id = id;
         Name = name;
         Password = password;
+    }
+
+    public void editProfile(string newName, string newBio)
+    {
+        this.Profile.Bio=newBio;
+        this.name = newName;
     }
     
 }
