@@ -59,6 +59,11 @@ public class User
         Comment Comment = new Comment(this,text,post);
     }
 
+    public void addReact(TYPE type,Post post){
+
+        React react = new React(this,type,post);
+    }
+
     
 
 
