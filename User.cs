@@ -64,6 +64,10 @@ public class User
         React react = new React(this,type,post);
     }
 
+    public void sendFreindRequest(User receiver)
+    {
+        new Request(this,receiver,Pending);
+    }
     
 
 
