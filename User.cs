@@ -48,9 +48,18 @@ public class User
     public void post(string text){
 
         if(string.IsNullOrWhiteSpace(text))
-                throw new ArgumentException("Password cannot be empty");
+                throw new ArgumentException("post cannot be empty");
         Post post = new Post(this,text);   
     }
+
+    public void addComment(string text, Post post){
+
+        if(string.IsNullOrWhiteSpace(text))
+            throw new ArgumentException("comment cannot be empty");
+        Comment Comment = new Comment(this,text,post);
+    }
+
+    
 
 
     
