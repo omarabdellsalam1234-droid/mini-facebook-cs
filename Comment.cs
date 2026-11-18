@@ -1,20 +1,16 @@
-public class Comment{
+public class Comment:Content{
 
-    private static int nextId = 1;
-    public int Id { get;}
-    public User Author { get;}
-    public string Text { get; private set; }
-    public DateTime CreatedAt { get;}
+    
     public Post post { get;}
 
-    public Comment(User author,string text,Post post)
+    public Comment(User author,string text,Post post):base(author,text)
     {   
-        Author=author;
-        Text=text;
         this.post=post;
-
-        Id=nextId++;
-        CreatedAt = DateTime.Now;
+    }
+    public override void Display()
+    {
+        Console.Write("  > ");
+        base.Display();
     }
 
 }
