@@ -14,7 +14,7 @@ public class User
             _name = value;
         }
     }
-    public string _password="";
+    private string _password="";
 
     public string Password 
     { 
@@ -29,8 +29,8 @@ public class User
     }
     public Profile Profile { get; private set; }
     public List<User> Friends { get; private set; } = new List<User>();
-    public List<Request> Requests {get; private set;} = new List<Request>();
-
+    public List<Request> ReceivedRequests { get; private set; } = new List<Request>();
+    public List<Request> SentRequests { get; private set; } = new List<Request>();
     
     public User(string name, string password)
     {
@@ -66,8 +66,29 @@ public class User
     }
 
     public void sendFreindRequest(User receiver)
-    {
-        new Request(this,receiver);
+    {   
+        if(this==receiver || Friends.Contains(receiver))
+            return;
+        foreach (var r in SentRequests)
+        {   //check if we already sent a friend request or not
+            if(r.Receiver==receiver && r.Status == RequestStatus.Pending)
+                return;
+        }
+        foreach (var s in receiver.SentRequests)
+        {   
+            //if receiver already sent a friend request to sender then the request is automatically accepted
+            if(s.Receiver==this && s.Status == RequestStatus.Pending)
+            {
+                s.Accept();
+                return;
+            }
+        }
+        Request req = new Request(this,receiver);
+        this.SentRequests.Add(req);
+        receiver.ReceivedRequests.Add(req);
+
+
+        
     }
     
 

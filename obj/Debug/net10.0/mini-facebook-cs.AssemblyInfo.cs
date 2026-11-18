@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("mini-facebook-cs")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9ff2bf861926e78ec4e5ba867e30a396515fb83c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a5b00e018ec1e1b33f0db9f887712421d224a385")]
 [assembly: System.Reflection.AssemblyProductAttribute("mini-facebook-cs")]
 [assembly: System.Reflection.AssemblyTitleAttribute("mini-facebook-cs")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
