@@ -1,8 +1,8 @@
 public class User
 {
-    private static nextId = 1;
-    public string Id { get; }
-    private string _name;
+    private static int nextId = 1;
+    public int Id { get; }
+    private string _name="";
 
     public string Name
     {
@@ -14,7 +14,7 @@ public class User
             _name = value;
         }
     }
-    public string _password;
+    public string _password="";
 
     public string Password 
     { 
@@ -27,8 +27,9 @@ public class User
             _password = value;
         }
     }
-    public Profile Profile { get; }
+    public Profile Profile { get; private set; }
     public List<User> Friends { get; private set; } = new List<User>();
+    public List<Request> Requests {get; private set;} = new List<Request>();
 
     
     public User(string name, string password)
@@ -42,7 +43,7 @@ public class User
     public void editProfile(string newName, string newBio)
     {
         this.Profile.Bio=newBio;
-        this.name = newName;
+        this.Name = newName;
     }
 
     public void post(string text){
@@ -59,14 +60,14 @@ public class User
         Comment Comment = new Comment(this,text,post);
     }
 
-    public void addReact(TYPE type,Post post){
+    public void addReact(ReactType type,Post post){
 
         React react = new React(this,type,post);
     }
 
     public void sendFreindRequest(User receiver)
     {
-        new Request(this,receiver,Pending);
+        new Request(this,receiver);
     }
     
 

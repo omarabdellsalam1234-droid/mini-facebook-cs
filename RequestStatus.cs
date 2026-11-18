@@ -1,0 +1,1 @@
+public enum RequestStatus {Pending,Accepted,Denied}

@@ -1,21 +1,21 @@
 public class Request{
 
-    private static nextId = 1;
+    private static int nextId = 1;
     public int Id { get;}
 
-    public enum STATUS {Pending,Accepted,Denied}
+    
     public User Sender { get;}
     public User Receiver { get;}
-    public STATUS Status {get; private set;}
     public DateTime CreatedAt { get;}
 
-    public Request(User sender,User receiver, STATUS status)
-    {   
-        Status=status;
+    public RequestStatus Status { get; private set; }
+
+    public Request(User sender, User receiver)
+    {
+        Status = RequestStatus.Pending;
         Sender = sender;
         Receiver = receiver;
-
-        Id=nextId++;
+        Id = nextId++;
         CreatedAt = DateTime.Now;
     }
 

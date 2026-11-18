@@ -1,6 +1,6 @@
 public class Comment{
 
-    private static nextId = 1;
+    private static int nextId = 1;
     public int Id { get;}
     public User Author { get;}
     public string Text { get; private set; }
@@ -11,7 +11,7 @@ public class Comment{
     {   
         Author=author;
         Text=text;
-        Post=post;
+        this.post=post;
 
         Id=nextId++;
         CreatedAt = DateTime.Now;
