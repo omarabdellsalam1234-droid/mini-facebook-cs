@@ -1,22 +1,23 @@
 public class MiniFacebook{
-    public List<User> Users {get; private set;} = new List<User>();
+    
+    private Dictionary<string, User> Users = new Dictionary<string, User>();
     public List<Post> Posts {get; private set;} = new List<Post>();
     
-    public void signUp(string name,string password)
+    public User? signUp(string name,string password)
     {
-        User user = new User(name,password);
-        Users.Add(user);
+        if (Users.ContainsKey(name))
+            return null;   // name is taken
+        User user = new User(name, password);
+        Users.Add(name, user);
+        return user;
         
     }
 
     public User? logIn(string name,string password)
     {   
-        
-        foreach(User user in Users)
-        {
-            if(user.Name == name && user.Password == password)
-                return user;
-        }
+        if (Users.ContainsKey(name) && Users[name].Password == password)
+            return Users[name];
+
         return null;
     }
     
