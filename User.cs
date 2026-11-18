@@ -31,6 +31,7 @@ public class User
     public List<User> Friends { get; private set; } = new List<User>();
     public List<Request> ReceivedRequests { get; private set; } = new List<Request>();
     public List<Request> SentRequests { get; private set; } = new List<Request>();
+    public List<Post> Posts { get; private set; } = new List<Post>();
     
     public User(string name, string password)
     {
@@ -87,8 +88,24 @@ public class User
         this.SentRequests.Add(req);
         receiver.ReceivedRequests.Add(req);
 
+    }
+  
+    public void AddPost(string text)
+    {
+        if (string.IsNullOrWhiteSpace(text))
+            throw new ArgumentException("post cannot be empty");
+        Posts.Add(new Post(this, text));
+    }
 
-        
+    public void AddComment(string text,Post post)
+    {
+        if(string.IsNullOrWhiteSpace(text))
+            throw new ArgumentException("Comment cannot be empty");
+        post.Comments.Add(new Comment(this,text,post));
+    }
+    public void AddReact(ReactType type, Post post)
+    {
+        post.Reacts.Add(new React(this, type, post));
     }
     
 
