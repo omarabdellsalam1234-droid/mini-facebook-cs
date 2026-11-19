@@ -47,7 +47,7 @@ class Program
         while (true)
         {
             Console.WriteLine($"\nLogged in as {user.Name}");
-            Console.WriteLine("1. Create post\n2. Display Feed\n3. Send friend request\n4. View friend requests\n0. Log out");
+            Console.WriteLine("1. Create post\n2. Display Feed\n3. Send friend request\n4. View Pending friend requests\n0. Log out");
             Console.Write("> ");
             string choice = Console.ReadLine();
 
@@ -75,18 +75,8 @@ class Program
             else if (choice == "4")
             {
                 if (user.ReceivedRequests.Count == 0) Console.WriteLine("No requests.");
-                for (int i = 0; i < user.ReceivedRequests.Count; i++)
-                    Console.WriteLine($"{i + 1}. {user.ReceivedRequests[i].Sender.Name}");
+                user.DisplayPendingRequests();
 
-                if (user.ReceivedRequests.Count > 0)
-                {
-                    Console.Write("Number to accept (0 to skip): ");
-                    if (int.TryParse(Console.ReadLine(), out int n) && n >= 1 && n <= user.ReceivedRequests.Count)
-                    {
-                        user.ReceivedRequests[n - 1].Accept();
-                        Console.WriteLine("Accepted.");
-                    }
-                }
             }
             else if (choice == "0") return;
             else Console.WriteLine("Invalid choice.");

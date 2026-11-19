@@ -7,9 +7,12 @@ public abstract class Content
     public DateTime CreatedAt { get; }
 
     protected Content(User owner, string text)
-    {
+    {   
+        ArgumentNullException.ThrowIfNull(owner);
+        
         if (string.IsNullOrWhiteSpace(text))
             throw new ArgumentException("Text cannot be empty");
+        
         Id = nextId++;
         Owner = owner;
         Text = text;

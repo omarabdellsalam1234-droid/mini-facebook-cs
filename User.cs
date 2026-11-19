@@ -91,11 +91,28 @@ public class User
         post.Reacts.Add(new React(this, type, post));
     }
     
-    public void DiplayPendingReequsts()
+    public void DisplayPendingRequests()
     {
-        var Pending = ReceivedRequests.Where(x => x.Status == RequestStatus.Pending);
-        foreach(Request r in Pending)
+        var pending = ReceivedRequests
+            .Where(r => r.Status == RequestStatus.Pending)
+            .ToList();
+
+        if (pending.Count == 0)
+        {
+            Console.WriteLine("No pending requests.");
+            return;
+        }
+
+        foreach (var r in pending)
+        {
             r.Display();
+            Console.Write("Accept? (y/n): ");
+            if (Console.ReadLine()?.Trim().ToLower() == "y")
+            {
+                r.Accept();
+                Console.WriteLine("Accepted.");
+            }
+        }
     }
     
 
