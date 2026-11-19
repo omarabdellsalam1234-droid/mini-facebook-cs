@@ -1,3 +1,4 @@
+using System.Linq;
 public class User
 {
     private static int nextId = 1;
@@ -87,6 +88,13 @@ public class User
     public void AddReact(ReactType type, Post post)
     {
         post.Reacts.Add(new React(this, type, post));
+    }
+    
+    public void DiplayPendingReequsts()
+    {
+        var Pending = ReceivedRequests.Where(x => x.Status == RequestStatus.Pending);
+        foreach(Request r in Pending)
+            r.Display();
     }
     
 

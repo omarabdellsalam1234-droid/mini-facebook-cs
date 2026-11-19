@@ -34,4 +34,10 @@ public class Request{
         Status = RequestStatus.Reject;
     }
 
+    public void Display()
+    {
+        Console.WriteLine($">>Sender: {Sender.Name}\n>>Date: {CreatedAt:yyyy-MM-dd}");
+        var mutual = Sender.Friends.Intersect(Receiver.Friends);
+        Console.WriteLine($"{mutual.Count()} mutual friends");
+    }
 }
