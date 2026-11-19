@@ -47,25 +47,6 @@ public class User
         this.Name = newName;
     }
 
-    public void post(string text){
-
-        if(string.IsNullOrWhiteSpace(text))
-                throw new ArgumentException("post cannot be empty");
-        Post post = new Post(this,text);   
-    }
-
-    public void addComment(string text, Post post){
-
-        if(string.IsNullOrWhiteSpace(text))
-            throw new ArgumentException("comment cannot be empty");
-        Comment Comment = new Comment(this,text,post);
-    }
-
-    public void addReact(ReactType type,Post post){
-
-        React react = new React(this,type,post);
-    }
-
     public void sendFreindRequest(User receiver)
     {   
         if(this==receiver || Friends.Contains(receiver))
