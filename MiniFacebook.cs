@@ -1,6 +1,6 @@
 public class MiniFacebook{
     
-    private Dictionary<string, User> Users = new Dictionary<string, User>();
+    public Dictionary<string, User> Users = new Dictionary<string, User>();
     public List<Post> Posts {get; private set;} = new List<Post>();
     
     public User? signUp(string name,string password)

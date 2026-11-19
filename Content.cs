@@ -19,5 +19,7 @@ public abstract class Content
     public virtual void Display()
     {
         Console.WriteLine($"{Owner.Name}: {Text}");
+        Console.WriteLine($"created on: {CreatedAt:yyyy-MM-dd}");
+
     }
 }
