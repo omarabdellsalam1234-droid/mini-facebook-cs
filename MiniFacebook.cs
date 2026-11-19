@@ -20,6 +20,19 @@ public class MiniFacebook{
 
         return null;
     }
+    public List<Post> GetFeed(User user)
+    {
+        return Posts
+            .Where(p => p.Owner == user || user.Friends.Contains(p.Owner))
+            .OrderByDescending(p => p.CreatedAt)
+            .ToList();
+    }
+
+    public void DisplayFeed(User user)
+    {
+        foreach (var post in GetFeed(user))
+            post.Display();
+    }
 
     
     

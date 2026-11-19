@@ -7,18 +7,18 @@ class Program
     {
         while (true)
         {
-            Console.WriteLine("\n1. Register\n2. Log in\n0. Exit");
+            Console.WriteLine("\n1. Sign Up\n2. Log in\n0. Exit");
             Console.Write("> ");
             string choice = Console.ReadLine();
 
             if (choice == "1")
-            {
+            {   
                 Console.Write("Username: ");
                 string name = Console.ReadLine();
                 Console.Write("Password: ");
                 string pass = Console.ReadLine();
 
-                User user = app.signUp(name, pass);
+                User? user = app.signUp(name, pass);
                 if (user == null) Console.WriteLine("Username taken.");
                 else
                 {
@@ -47,7 +47,7 @@ class Program
         while (true)
         {
             Console.WriteLine($"\nLogged in as {user.Name}");
-            Console.WriteLine("1. Create post\n2. View my posts\n3. Send friend request\n4. View friend requests\n0. Log out");
+            Console.WriteLine("1. Create post\n2. Display Feed\n3. Send friend request\n4. View friend requests\n0. Log out");
             Console.Write("> ");
             string choice = Console.ReadLine();
 
@@ -59,11 +59,7 @@ class Program
             }
             else if (choice == "2")
             {
-                if (user.Posts.Count == 0) Console.WriteLine("No posts yet.");
-                foreach(Post p in user.Posts)
-                {
-                    p.Display();
-                }
+                app.DisplayFeed(user);
             }
             else if (choice == "3")
             {

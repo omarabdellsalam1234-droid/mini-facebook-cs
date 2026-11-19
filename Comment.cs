@@ -9,7 +9,7 @@ public class Comment:Content{
     }
     public override void Display()
     {
-        Console.Write("  > ");
+        Console.Write("  --> ");
         base.Display();
         
     }

@@ -35,7 +35,8 @@ public class User
     public List<Post> Posts { get; private set; } = new List<Post>();
     
     public User(string name, string password)
-    {
+    {   if(string.IsNullOrWhiteSpace(name)||string.IsNullOrWhiteSpace(password))
+            throw new ArgumentException("name or password cannot be empty");
         Id = nextId++;
         Name = name;
         Password = password;
@@ -50,7 +51,7 @@ public class User
 
     public void sendFreindRequest(User receiver)
     {   
-        if(this==receiver || Friends.Contains(receiver))
+        if(this==receiver || Friends.Contains(receiver) || receiver ==null)
             return;
         foreach (var r in SentRequests)
         {   //check if we already sent a friend request or not
