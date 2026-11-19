@@ -9,7 +9,18 @@ public class Post:Content
     public override void Display()
     {
         base.Display();
-        Console.WriteLine($"  {Reacts.Count} reacts, {Comments.Count} comments");
+        var reactsByType = Reacts.GroupBy(x => x.Type).OrderBy(o => o.Count());
+
+        foreach(var group in reactsByType)
+        {
+            Console.WriteLine($"->{group.Key}:{group.Count()}");
+             
+        }
+        foreach(var c in Comments)
+        {
+            Console.WriteLine("\n\t");
+            c.Display();
+        }
     }
     
     
