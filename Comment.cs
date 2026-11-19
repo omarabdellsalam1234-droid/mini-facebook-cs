@@ -11,6 +11,7 @@ public class Comment:Content{
     {
         Console.Write("  > ");
         base.Display();
+        
     }
 
 }
