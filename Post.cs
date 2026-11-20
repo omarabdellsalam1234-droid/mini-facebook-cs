@@ -6,6 +6,7 @@ public class Post:Content
 
     public Post(User author, string text):base(author,text){}
 
+
     public override void Display()
     {
         base.Display();

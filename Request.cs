@@ -11,7 +11,10 @@ public class Request{
     public RequestStatus Status { get; private set; }
 
     public Request(User sender, User receiver)
-    {
+    {   
+        ArgumentNullException.ThrowIfNull(sender);
+        ArgumentNullException.ThrowIfNull(receiver);
+        
         Status = RequestStatus.Pending;
         Sender = sender;
         Receiver = receiver;

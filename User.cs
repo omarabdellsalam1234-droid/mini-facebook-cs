@@ -75,15 +75,13 @@ public class User
   
     public void AddPost(string text)
     {
-        if (string.IsNullOrWhiteSpace(text))
-            throw new ArgumentException("post cannot be empty");
+
         Posts.Add(new Post(this, text));
     }
 
     public void AddComment(string text,Post post)
     {
-        if(string.IsNullOrWhiteSpace(text))
-            throw new ArgumentException("Comment cannot be empty");
+
         post.Comments.Add(new Comment(this,text,post));
     }
     public void AddReact(ReactType type, Post post)
@@ -106,11 +104,15 @@ public class User
         foreach (var r in pending)
         {
             r.Display();
-            Console.Write("Accept? (y/n): ");
+            Console.Write("type (Y) to accept or (N) to reject: ");
             if (Console.ReadLine()?.Trim().ToLower() == "y")
             {
                 r.Accept();
                 Console.WriteLine("Accepted.");
+            }else if(Console.ReadLine()?.Trim().ToLower() == "n")
+            {
+                r.Reject();
+                Console.WriteLine("Rejected.");
             }
         }
     }

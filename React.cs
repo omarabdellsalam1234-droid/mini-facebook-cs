@@ -10,6 +10,8 @@ public class React{
 
     public React(User owner,ReactType type,Post post)
     {   
+        if(owner ==null || post == null)
+            throw new ArgumentNullException("owner and post must not be empty");
         Owner=owner;
         this.post=post;
         Type=type;

@@ -31,7 +31,10 @@ public class MiniFacebook{
     public void DisplayFeed(User user)
     {
         foreach (var post in GetFeed(user))
+        {
             post.Display();
+        }
+            
     }
 
     
